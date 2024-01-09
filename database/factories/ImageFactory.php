@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Categorie>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Image>
  */
-class CategorieFactory extends Factory
+class ImageFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -16,10 +16,9 @@ class CategorieFactory extends Factory
      */
     public function definition(): array
     {
-        $name = fake()->text();
         return [
-            'name' => $name,
-            'slug' => $name
+            'url' => 'posts/'. $this->faker->image('public/storage/posts', 640, 480, null, false),
         ];
+        
     }
 }

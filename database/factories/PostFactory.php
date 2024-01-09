@@ -28,4 +28,4 @@ class PostFactory extends Factory
             'user_id' => User::inRandomOrder()->first()->id
         ];
     }
-}    
+}

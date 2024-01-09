@@ -15,7 +15,7 @@ class PostTagFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition()
+    public function definition(): array
     {
         return [
             'post_id' => Post::inRandomOrder()->first(),
