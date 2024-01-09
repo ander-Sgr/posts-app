@@ -41,7 +41,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    
+
+    public function setPasswordAttribute($password){
+        $this->attributes['password'] = bcrypt($password);
+    }
+
     public function posts(){
         return $this->hasMany(Post::class);
     }
@@ -55,8 +59,12 @@ class User extends Authenticatable
     }
 
     public function popularPost(){
-        return $this->hasOne(Post::class)->ofMany(['visites', 'max'], function($query){
+        return $this->hasOne(Post::class)->ofMany(['visistes', 'max'], function($query){
             $query->where('visites', '<', '1000');
         });
+    }
+
+    public function rols(){
+        return $this->belongsToMany(Rol::class);
     }
 }
